@@ -120,7 +120,7 @@ const damenFullList: ServiceList[] = [
 function ServiceCard({ service }: { service: Service }) {
   return (
     <div className="flex items-center gap-4 bg-[#1a2332] rounded-lg overflow-hidden group hover:bg-[#243044] transition-colors">
-      <div className="relative w-24 h-24 flex-shrink-0">
+      <div className="relative w-32 sm:w-36 h-20 sm:h-24 flex-shrink-0">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#1a2332] z-10" />
         <Image
           src={service.image}
