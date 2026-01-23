@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export', // Statischer Export für IONOS
+  trailingSlash: true, // Wichtig für statisches Hosting
   images: {
+    unoptimized: true, // Erforderlich für statischen Export
     remotePatterns: [
       {
         protocol: 'https',
