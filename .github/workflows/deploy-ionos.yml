@@ -25,12 +25,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to IONOS via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy to IONOS via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
-          server-dir: /
-          dangerous-clean-slate: false
+          local_path: './out/*'
+          remote_path: '/'
+          sftpArgs: '-o ConnectTimeout=30'
