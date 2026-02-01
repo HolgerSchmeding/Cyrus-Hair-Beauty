@@ -1,10 +1,17 @@
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Über uns | CYRUS Hair & Beauty',
-  description: 'Lernen Sie unser Team kennen – Mohsen und Beckie von CYRUS Hair & Beauty in Baden-Baden.',
+export const metadata: Metadata = {
+  title: 'Über uns',
+  description: 'Lernen Sie Mohsen und Beckie kennen – das Team von CYRUS Hair & Beauty in Baden-Baden. Über 10 Jahre Erfahrung in Haarschnitt, Styling und Bartpflege.',
+  keywords: ['Team CYRUS', 'Friseur Team Baden-Baden', 'Mohsen Friseur', 'Über uns Friseur'],
+  openGraph: {
+    title: 'Über uns | CYRUS Hair & Beauty',
+    description: 'Lernen Sie Mohsen und Beckie kennen – das Team von CYRUS Hair & Beauty in Baden-Baden.',
+    images: ['/Selbstbildnis Mo copy.png'],
+  },
 };
 
 export default function UeberUns() {

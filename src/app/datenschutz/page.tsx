@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Datenschutzerklärung | CYRUS Hair & Beauty',
-  description: 'Datenschutzerklärung von CYRUS Hair & Beauty in Baden-Baden.',
+export const metadata: Metadata = {
+  title: 'Datenschutzerklärung',
+  description: 'Datenschutzerklärung von CYRUS Hair & Beauty in Baden-Baden. Informationen zur Datenverarbeitung gemäß DSGVO.',
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function Datenschutz() {
