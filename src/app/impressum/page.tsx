@@ -32,12 +32,6 @@ export default function Impressum() {
                 <p>Sophienstrasse 13</p>
                 <p>76530 Baden-Baden</p>
                 <p>Deutschland</p>
-                <p className="mt-3">
-                  E-Mail:{' '}
-                  <a href="mailto:cyrus.barber.2024@gmail.com" className="text-amber-500 hover:text-amber-400 transition-colors">
-                    cyrus.barber.2024@gmail.com
-                  </a>
-                </p>
               </div>
             </section>
 
@@ -71,26 +65,55 @@ export default function Impressum() {
               </div>
             </section>
 
-            {/* Umsatzsteuer-ID */}
+            {/* Aufsichtsbehörde & Berufsrecht */}
             <section>
-              <h2 className="text-xl font-semibold text-white mb-4">Umsatzsteuer-ID</h2>
-              <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:</p>
-              <p className="font-medium">DE 35 549 872 010</p>
+              <h2 className="text-xl font-semibold text-white mb-4">Aufsichtsbehörde & Berufsrecht</h2>
+              <div className="space-y-4">
+                <div>
+                  <p className="font-medium text-white mb-2">Zuständige Kammer:</p>
+                  <div className="bg-[#0d1520] border-l-2 border-amber-500 rounded-lg p-5 space-y-1">
+                    <p>Handwerkskammer Karlsruhe</p>
+                    <p>Friedrichsplatz 4-5</p>
+                    <p>76133 Karlsruhe</p>
+                    <p className="mt-2">
+                      Webseite:{' '}
+                      <a 
+                        href="https://www.hwk-karlsruhe.de" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-amber-500 hover:text-amber-400 transition-colors"
+                      >
+                        https://www.hwk-karlsruhe.de
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                <p>
+                  <strong className="text-white">Berufsbezeichnung:</strong> Friseur (verliehen in der Bundesrepublik Deutschland)
+                </p>
+                <p>
+                  <strong className="text-white">Berufsrechtliche Regelungen:</strong> Handwerksordnung (HwO)<br />
+                  Die Regelungen sind einsehbar unter:{' '}
+                  <a 
+                    href="https://www.gesetze-im-internet.de/hwo/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-amber-500 hover:text-amber-400 transition-colors"
+                  >
+                    https://www.gesetze-im-internet.de/hwo/
+                  </a>
+                </p>
+              </div>
             </section>
 
-            {/* Verantwortlich für den Inhalt */}
+            {/* Redaktionell verantwortlich */}
             <section>
-              <h2 className="text-xl font-semibold text-white mb-4">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+              <h2 className="text-xl font-semibold text-white mb-4">Redaktionell verantwortlich</h2>
+              <p className="mb-2">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</p>
               <div className="bg-[#0d1520] border-l-2 border-amber-500 rounded-lg p-5 space-y-1">
                 <p>Mohsen Sadeghvand</p>
                 <p>Sophienstrasse 13</p>
                 <p>76530 Baden-Baden</p>
-                <p className="mt-3">
-                  E-Mail:{' '}
-                  <a href="mailto:cyrus.barber.2024@gmail.com" className="text-amber-500 hover:text-amber-400 transition-colors">
-                    cyrus.barber.2024@gmail.com
-                  </a>
-                </p>
               </div>
             </section>
 
@@ -113,7 +136,7 @@ export default function Impressum() {
 
             {/* Verbraucherstreitbeilegung */}
             <section>
-              <h2 className="text-xl font-semibold text-white mb-4">Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
+              <h2 className="text-xl font-semibold text-white mb-4">Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
               <p>
                 Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer 
                 Verbraucherschlichtungsstelle teilzunehmen.
@@ -126,9 +149,13 @@ export default function Impressum() {
               <p>
                 Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten 
                 nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als 
-                Diensteanbieter jedoch nicht unter der Verpflichtung, übermittelte oder gespeicherte 
-                fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine 
-                rechtswidrige Tätigkeit hinweisen.
+                Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde 
+                Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige 
+                Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von 
+                Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche 
+                Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung 
+                möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte 
+                umgehend entfernen.
               </p>
             </section>
 
@@ -139,7 +166,11 @@ export default function Impressum() {
                 Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen 
                 Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. 
                 Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der 
-                Seiten verantwortlich.
+                Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche 
+                Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht 
+                erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne 
+                konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von 
+                Rechtsverletzungen werden wir derartige Links umgehend entfernen.
               </p>
             </section>
 
@@ -150,30 +181,13 @@ export default function Impressum() {
                 Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen 
                 dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art 
                 der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen 
-                Zustimmung des jeweiligen Autors bzw. Erstellers.
+                Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind 
+                nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser 
+                Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. 
+                Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf 
+                eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. 
+                Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
               </p>
-            </section>
-
-            {/* Kontakt Footer */}
-            <section>
-              <h2 className="text-xl font-semibold text-white mb-4">Kontakt</h2>
-              <p className="mb-4">Fragen zu dieser Datenschutzerklärung richten Sie bitte an:</p>
-              <div className="bg-[#0d1520] border-l-2 border-amber-500 rounded-lg p-5 space-y-1">
-                <p className="text-amber-500 font-semibold">CYRUS Hair & Beauty</p>
-                <p>Mohsen Sadeghvand</p>
-                <p>
-                  Telefon:{' '}
-                  <a href="tel:+4972213745816" className="text-amber-500 hover:text-amber-400 transition-colors">
-                    +49 (0)7221 3745816
-                  </a>
-                </p>
-                <p>
-                  E-Mail:{' '}
-                  <a href="mailto:cyrus.barber.2024@gmail.com" className="text-amber-500 hover:text-amber-400 transition-colors">
-                    cyrus.barber.2024@gmail.com
-                  </a>
-                </p>
-              </div>
             </section>
 
             {/* Zurück zur Website */}

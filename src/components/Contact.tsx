@@ -99,19 +99,28 @@ export default function Contact() {
 
           {/* Right Column - Map & Links */}
           <div className="space-y-4">
-            {/* Google Maps Embed */}
-            <div className="rounded-lg overflow-hidden h-64 lg:h-72">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.7!2d8.2406!3d48.7622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47970698c93ff93d%3A0x0!2sSophienstrasse%2013%2C%2076530%20Baden-Baden!5e0!3m2!1sde!2sde!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="CYRUS Hair & Beauty Standort"
-              />
-            </div>
+            {/* Google Maps Link (DSGVO-konform) */}
+            <a
+              href="https://www.google.com/maps/place/Sophienstrasse+13,+76530+Baden-Baden"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-lg overflow-hidden h-64 lg:h-72 bg-[#0d1520] hover:bg-[#111c2a] transition-colors duration-200 group"
+            >
+              <div className="w-full h-full flex flex-col items-center justify-center text-center p-6">
+                <svg className="w-16 h-16 text-amber-500 mb-4 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <p className="text-white font-semibold text-lg mb-2">Standort anzeigen</p>
+                <p className="text-gray-400 text-sm mb-4">Sophienstraße 13, 76530 Baden-Baden</p>
+                <span className="inline-flex items-center gap-2 text-amber-500 font-medium group-hover:gap-3 transition-all duration-200">
+                  In Google Maps öffnen
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </span>
+              </div>
+            </a>
 
             {/* Instagram Card */}
             <div className="bg-[#0d1520] rounded-lg p-5">
