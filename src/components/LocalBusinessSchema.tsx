@@ -2,11 +2,11 @@ export default function LocalBusinessSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "HairSalon",
-    "@id": "https://cyrus-hair-beauty.de/#organization",
+    "@id": "https://www.cyrus-hair.de/#organization",
     name: "CYRUS Hair & Beauty",
     alternateName: "Cyrus Friseur Baden-Baden",
     description: "Premium Friseur in Baden-Baden. Haarschnitte, Styling, Bartpflege und mehr für Damen und Herren.",
-    url: "https://cyrus-hair-beauty.de",
+    url: "https://www.cyrus-hair.de",
     telephone: "+49-7221-3745816",
     email: "cyrus.barber.2024@gmail.com",
     address: {
@@ -23,8 +23,8 @@ export default function LocalBusinessSchema() {
       longitude: 8.2405,
     },
     image: [
-      "https://cyrus-hair-beauty.de/Selbstbildnis Mo copy.png",
-      "https://cyrus-hair-beauty.de/Background hero section.jpg",
+      "https://www.cyrus-hair.de/Selbstbildnis Mo copy.png",
+      "https://www.cyrus-hair.de/Background hero section.jpg",
     ],
     sameAs: [
       "https://www.instagram.com/cyrus_hair_beauty/",

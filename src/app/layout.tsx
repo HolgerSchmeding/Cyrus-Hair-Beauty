@@ -14,7 +14,7 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const siteUrl = "https://cyrus-hair-beauty.de";
+const siteUrl = "https://www.cyrus-hair.de";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
