@@ -27,7 +27,11 @@ jobs:
         run: npm run build
 
       - name: List build output
-        run: ls -la ./out/
+        run: |
+          echo "=== Build Output ==="
+          ls -la ./out/
+          echo "=== Datenschutz ==="
+          cat ./out/datenschutz/index.html | head -100
 
       - name: Deploy to IONOS via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
@@ -35,6 +39,7 @@ jobs:
           server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          local_path: './out/*'
+          local_path: './out/'
           remote_path: '/'
-          sftpArgs: '-o StrictHostKeyChecking=no -o ConnectTimeout=60'
+          sftpArgs: '-o StrictHostKeyChecking=no -o ConnectTimeout=120'
+          delete_remote_files: true
