@@ -30,13 +30,11 @@ jobs:
         run: ls -la ./out/
 
       - name: Deploy to IONOS via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
-          server-dir: ${{ secrets.FTP_REMOTE_PATH }}
-          protocol: ftps
-          port: 21
-          timeout: 60000
+          server: ${{ secrets.SFTP_SERVER }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          local_path: './out/*'
+          remote_path: '/'
+          sftpArgs: '-o StrictHostKeyChecking=no -o ConnectTimeout=60'
