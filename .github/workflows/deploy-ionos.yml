@@ -42,4 +42,3 @@ jobs:
           local_path: './out/'
           remote_path: '/'
           sftpArgs: '-o StrictHostKeyChecking=no -o ConnectTimeout=120'
-          delete_remote_files: true
