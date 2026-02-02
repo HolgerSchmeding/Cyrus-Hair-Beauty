@@ -30,15 +30,15 @@ jobs:
         run: |
           echo "=== Build Output ==="
           ls -la ./out/
-          echo "=== Datenschutz ==="
-          cat ./out/datenschutz/index.html | head -100
+          echo "=== Datenschutz Preview ==="
+          grep -o 'Stand: [A-Za-z]* [0-9]*' ./out/datenschutz/index.html | head -1
 
-      - name: Deploy to IONOS via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: ${{ secrets.SFTP_SERVER }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          local_path: './out/'
-          remote_path: '/'
-          sftpArgs: '-o StrictHostKeyChecking=no -o ConnectTimeout=120'
+      - name: Deploy to IONOS via lftp
+        run: |
+          sudo apt-get update && sudo apt-get install -y lftp
+          lftp -u "${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }}" -e "
+            set sftp:auto-confirm yes;
+            set ssl:verify-certificate no;
+            mirror -R --verbose --delete --parallel=5 ./out/ /;
+            quit
+          " sftp://${{ secrets.SFTP_SERVER }}
