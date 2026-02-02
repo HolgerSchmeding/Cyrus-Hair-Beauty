@@ -33,76 +33,34 @@ jobs:
           echo ""
           echo "=== Datenschutz Preview ==="
           grep -o 'Stand: [A-Za-z]* [0-9]*' ./out/datenschutz/index.html | head -1 || echo "Pattern nicht gefunden"
-          echo ""
-          echo "=== Dateien im Build ==="
-          find ./out -type f | wc -l
-          echo "Dateien insgesamt"
 
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Deploy via lftp (SFTP with mirror)
-        env:
-          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-          SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
-          SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+      - name: SFTP Probe (pwd + ls) - Ermittle korrekten Pfad
         run: |
-          # Debug: Zeige Verbindungsinfo (ohne Passwort)
-          echo "Connecting to: ${SFTP_USERNAME}@${SFTP_SERVER}"
-          echo "Local files to upload:"
-          ls -la ./out/
-          
-          # Methode 1: Schreibe Credentials in ~/.netrc (sicherste Methode für Sonderzeichen)
-          # .netrc isoliert das Passwort komplett vom Shell-Parsing
-          cat > ~/.netrc << NETRC_EOF
-          machine ${SFTP_SERVER}
-          login ${SFTP_USERNAME}
-          password ${SFTP_PASSWORD}
-          NETRC_EOF
-          chmod 600 ~/.netrc
-          
-          # Erstelle lftp Script-Datei
-          cat > /tmp/lftp_deploy.sh << 'LFTP_SCRIPT'
-          set sftp:auto-confirm yes
-          set ssl:verify-certificate no
-          set net:timeout 60
-          set net:max-retries 3
-          set net:reconnect-interval-base 5
-          set cmd:fail-exit yes
-          debug 3
-          pwd
-          ls
-          echo "=== Starting mirror upload ==="
-          mirror --reverse --verbose --delete --ignore-time --parallel=3 . /
-          echo "=== Mirror complete ==="
-          ls -la
+          lftp -e "
+          set sftp:auto-confirm yes;
+          set net:timeout 20;
+          open -u '${{ secrets.SFTP_USERNAME }}','${{ secrets.SFTP_PASSWORD }}' sftp://${{ secrets.SFTP_SERVER }}:22;
+          echo '=== PWD ===';
+          pwd;
+          echo '=== LS ===';
+          ls;
           bye
-          LFTP_SCRIPT
-          
-          # Wechsle in out-Verzeichnis und führe lftp aus
-          cd ./out
-          lftp -f /tmp/lftp_deploy.sh sftp://${SFTP_SERVER}
-          
-          # Cleanup
-          rm -f ~/.netrc /tmp/lftp_deploy.sh
-          
-          echo "=== Deploy completed ==="
+          "
 
-      - name: Verify deployment
-        env:
-          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-          SFTP_SERVER: ${{ secrets.SFTP_SERVER }}
-          SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+      - name: Deploy via lftp mirror
         run: |
-          # Schreibe Credentials erneut für Verifikation
-          cat > ~/.netrc << NETRC_EOF
-          machine ${SFTP_SERVER}
-          login ${SFTP_USERNAME}
-          password ${SFTP_PASSWORD}
-          NETRC_EOF
-          chmod 600 ~/.netrc
-          
-          echo "=== Remote directory listing ==="
-          lftp -e "set sftp:auto-confirm yes; set ssl:verify-certificate no; ls -la; bye" sftp://${SFTP_SERVER}
-          
-          rm -f ~/.netrc
+          cd ./out
+          lftp -e "
+          set sftp:auto-confirm yes;
+          set net:timeout 60;
+          set xfer:clobber yes;
+          open -u '${{ secrets.SFTP_USERNAME }}','${{ secrets.SFTP_PASSWORD }}' sftp://${{ secrets.SFTP_SERVER }}:22;
+          echo '=== Starting mirror upload ===';
+          mirror -R --delete --ignore-time --verbose . /;
+          echo '=== Mirror complete ===';
+          ls;
+          bye
+          "
