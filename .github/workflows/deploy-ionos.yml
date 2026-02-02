@@ -58,9 +58,18 @@ jobs:
           set net:timeout 60;
           set xfer:clobber yes;
           open -u '${{ secrets.SFTP_USERNAME }}','${{ secrets.SFTP_PASSWORD }}' sftp://${{ secrets.SFTP_SERVER }}:22;
+          echo '=== Removing old directories to force fresh upload ===';
+          rm -rf /datenschutz;
+          rm -rf /impressum;
+          rm -rf /uber-uns;
+          rm -rf /galerie;
+          rm -rf /_next;
+          rm -rf /404;
+          rm -rf /out;
           echo '=== Starting mirror upload ===';
           mirror -R --delete --ignore-time --verbose . /;
           echo '=== Mirror complete ===';
-          ls;
+          ls -la;
+          ls -la /datenschutz;
           bye
           "
